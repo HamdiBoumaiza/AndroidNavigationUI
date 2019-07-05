@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/mobile_navigation"
+            app:startDestination="@id/destination_home">
+
+    <fragment
+            android:id="@+id/destination_home"
+            android:name="com.hamdi.helloartisan.fragments.home.HomeFragment"
+            android:label="Home"
+            tools:layout="@layout/fragment_home">
+
+        <action
+                android:id="@+id/next_action_item"
+                app:destination="@id/destination_add"/>
+
+        <deepLink app:uri="myapp.com" />
+        <!--<deepLink app:uri="myapp.com/{title}" />-->
+
+    </fragment>
+
+
+    <fragment
+            android:id="@+id/destination_profile"
+            android:name="com.hamdi.helloartisan.fragments.profile.ProfileFragment"
+            android:label="Camera"
+            tools:layout="@layout/fragment_profile">
+        <action
+                android:id="@+id/next_action_settings"
+                app:destination="@id/destination_settings"/>
+
+        <action
+                android:id="@+id/next_action_add"
+                app:destination="@id/destination_add"/>
+
+        <argument
+                android:name="numOfPhotos"
+                android:defaultValue="0"
+                app:argType="integer"/>
+    </fragment>
+
+
+    <fragment
+            android:id="@+id/destination_settings"
+            android:name="com.hamdi.helloartisan.fragments.settings.SettingsFragment"
+            android:label="Photos"
+            tools:layout="@layout/fragment_settings">
+        <action
+                android:id="@+id/next_action_home"
+                app:destination="@id/destination_profile"
+                app:enterAnim="@anim/enter_slide_down"
+                app:exitAnim="@anim/exit_slide_down"
+                app:popEnterAnim="@anim/pop_enter_slide_up"
+                app:popExitAnim="@anim/pop_exit_slide_up"
+        />
+
+    </fragment>
+
+    <fragment
+            android:id="@+id/destination_add"
+            android:name="com.hamdi.helloartisan.fragments.add.AddFragment"
+            android:label="Add"
+            tools:layout="@layout/fragment_add">
+
+        <argument
+                android:name="params"
+                android:defaultValue="NO"
+                app:argType="string"/>
+
+    </fragment>
+
+
+</navigation>
